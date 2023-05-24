@@ -129,7 +129,7 @@ def baixar(id):
         pdf.add_page()
         # HEADER
         # Logo
-        pdf.image('static/img/descarte.png', 65, 10, 80)
+        pdf.image('static/img/reciclando.png', 65, 10, 80)
         # Arial bold 15
         pdf.set_font('Arial', 'B', 30)
         # Move to the right
