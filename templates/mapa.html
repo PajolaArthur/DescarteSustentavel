@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_bf9dd8686bf6d05bf1850e082c378023 {
+                    position: center;
+                    width: 800.0px;
+                    height: 400.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_bf9dd8686bf6d05bf1850e082c378023" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_bf9dd8686bf6d05bf1850e082c378023 = L.map(
+                "map_bf9dd8686bf6d05bf1850e082c378023",
+                {
+                    center: [-20.719641, -47.887951],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 14,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f113945baa2f9a626e32d2f4def06c25 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_bf9dd8686bf6d05bf1850e082c378023);
+        
+    
+            var marker_cece0ed583250cbeeb2d56522edabf24 = L.marker(
+                [-20.71962, -47.88474755209295],
+                {}
+            ).addTo(map_bf9dd8686bf6d05bf1850e082c378023);
+        
+    
+        var popup_eb86f3ebaebf0c3115d669da0bd7eb4e = L.popup({"maxWidth": 1000});
+
+        
+            
+                var html_0c22aae7d70786d34a17aa89338b2e70 = $(`<div id="html_0c22aae7d70786d34a17aa89338b2e70" style="width: 100.0%; height: 100.0%;">  Descrição: Geladeira  Endereço: Prefeitura Municipal de Orlandia  Telefone: (16) 99316-2959  Dia: Domingo</div>`)[0];
+                popup_eb86f3ebaebf0c3115d669da0bd7eb4e.setContent(html_0c22aae7d70786d34a17aa89338b2e70);
+            
+        
+
+        marker_cece0ed583250cbeeb2d56522edabf24.bindPopup(popup_eb86f3ebaebf0c3115d669da0bd7eb4e)
+        ;
+
+        
+    
+    
+            marker_cece0ed583250cbeeb2d56522edabf24.bindTooltip(
+                `<div>
+                     Geladeira
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ae2904007e2bcf7a25b411bb9cf4cf18 = L.marker(
+                [-20.7198756, -47.8860481],
+                {}
+            ).addTo(map_bf9dd8686bf6d05bf1850e082c378023);
+        
+    
+        var popup_1b2220a0bf8c9e6fd6f554b86f23cfeb = L.popup({"maxWidth": 1000});
+
+        
+            
+                var html_d6269b4f9a4dc6df4aa9f5c6ad3214d6 = $(`<div id="html_d6269b4f9a4dc6df4aa9f5c6ad3214d6" style="width: 100.0%; height: 100.0%;">  Descrição: Computador  Endereço: Rua Quatro, 520 - Centro  Telefone: (34) 99889-2822  Dia: Quinta-feira</div>`)[0];
+                popup_1b2220a0bf8c9e6fd6f554b86f23cfeb.setContent(html_d6269b4f9a4dc6df4aa9f5c6ad3214d6);
+            
+        
+
+        marker_ae2904007e2bcf7a25b411bb9cf4cf18.bindPopup(popup_1b2220a0bf8c9e6fd6f554b86f23cfeb)
+        ;
+
+        
+    
+    
+            marker_ae2904007e2bcf7a25b411bb9cf4cf18.bindTooltip(
+                `<div>
+                     Computador
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5c62bc7de7cd566ab68dbc1a5ee01ae4 = L.marker(
+                [-20.71536215, -47.89092688752649],
+                {}
+            ).addTo(map_bf9dd8686bf6d05bf1850e082c378023);
+        
+    
+        var popup_95ced3ca6488eeeef8fb738392fb4e0c = L.popup({"maxWidth": 1000});
+
+        
+            
+                var html_546ac3b312668281720df8b0ee5aa314 = $(`<div id="html_546ac3b312668281720df8b0ee5aa314" style="width: 100.0%; height: 100.0%;">  Descrição: Forno  Endereço: ETEC Prof. Alcídio de Souza Prado - Centro  Telefone: (16) 99988-0774  Dia: Segunda-feira</div>`)[0];
+                popup_95ced3ca6488eeeef8fb738392fb4e0c.setContent(html_546ac3b312668281720df8b0ee5aa314);
+            
+        
+
+        marker_5c62bc7de7cd566ab68dbc1a5ee01ae4.bindPopup(popup_95ced3ca6488eeeef8fb738392fb4e0c)
+        ;
+
+        
+    
+    
+            marker_5c62bc7de7cd566ab68dbc1a5ee01ae4.bindTooltip(
+                `<div>
+                     Forno
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a3a1ce9823c399b327f6faf82ec50e50 = L.marker(
+                [-20.7087816, -47.8987049],
+                {}
+            ).addTo(map_bf9dd8686bf6d05bf1850e082c378023);
+        
+    
+        var popup_9ba915a04454316cf88bf2fdb6e0562b = L.popup({"maxWidth": 1000});
+
+        
+            
+                var html_347387ed8918ec8845731d647569e76a = $(`<div id="html_347387ed8918ec8845731d647569e76a" style="width: 100.0%; height: 100.0%;">  Descrição: Micro-ondas  Endereço: Rua Vinte e Seis, 1494 - Jardim Cidade Alta  Telefone: (16) 99214-5034  Dia: Terça-feira</div>`)[0];
+                popup_9ba915a04454316cf88bf2fdb6e0562b.setContent(html_347387ed8918ec8845731d647569e76a);
+            
+        
+
+        marker_a3a1ce9823c399b327f6faf82ec50e50.bindPopup(popup_9ba915a04454316cf88bf2fdb6e0562b)
+        ;
+
+        
+    
+    
+            marker_a3a1ce9823c399b327f6faf82ec50e50.bindTooltip(
+                `<div>
+                     Micro-ondas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

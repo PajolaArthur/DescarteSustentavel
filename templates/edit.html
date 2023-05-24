@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="section-content">
+        <div class="title-wrap">
+            <h2 class="section-title"> {% block title %} Editando... "{{ coleta['descricao'] }} - 0{{ coleta['id'] }}" {% endblock %}</h2>
+            <p class="section-sub-title"></p>
+        </div>
+<section id="gtco-features" class="bg-grey">
+        <div class="price-box card mb-4 box-shadow">
+            <div class="card-body p-4">
+
+                <form method="post">
+                    <div class="form-group">
+                        <label for="title">Descrição</label>
+                        <input type="text" name="descricao" placeholder="Fogão"
+                               class="form-control"
+                               value="{{ request.form['descricao'] or coleta['descricao'] }}">
+                        </input>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="content">Quantidade</label>
+                        <textarea  name="quantidade" placeholder="2"
+                                  class="form-control">{{ request.form['quantidade'] or coleta['quantidade'] }}</textarea>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="content">Endereço</label>
+                        <textarea name="endereco" placeholder="Praça Coronel Francisco Orlando, 600"
+                                  class="form-control">{{ request.form['endereco'] or coleta['endereco'] }}</textarea>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="content">Telefone</label>
+                        <textarea name="telefone" placeholder="16999999999"
+                                  class="form-control">{{ request.form['telefone'] or coleta['telefone'] }}</textarea>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="content">Melhor dia para realizar coleta</label>
+                        <textarea name="diacoleta" placeholder="Segunda-feira"
+                                  class="form-control">{{ request.form['diacoleta'] or coleta['diacoleta'] }}</textarea>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="content">Hora para realizar coleta</label>
+                        <textarea name="horacoleta" placeholder="15:00"
+                                  class="form-control">{{ request.form['horacoleta'] or coleta['horacoleta'] }}</textarea>
+                    </div>
+                
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Atualizar</button>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" onclick="history.back();" value="Back" class="btn btn-success">Cancelar</button>
+                    </div>
+                </form> 
+        
+        </div>
+        </div>
+
+{% endblock %}

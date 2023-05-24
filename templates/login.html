@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="section-content">
+        <div class="title-wrap">
+            <h2 class="section-title"> {% block title %} Controle de Acesso {% endblock %}</h2>
+            <p class="section-sub-title"></p>
+        </div>
+        <div class="price-box card mb-4 box-shadow">
+            <div class="card-body p-4">
+        <form  method="post">
+            <div class="form-group">
+                <label for="title">Nome</label>
+                <input type="text" maxlength="60" name="nome"
+                       placeholder="João" class="form-control"
+                       value="{{ request.form['nome'] }}"></input>
+            </div>
+        
+            <div class="form-group">
+                <label for="title">Senha</label>
+                <input type="password" maxlength="60" name="senha"
+                       placeholder="****" class="form-control"
+                       value="{{ request.form['senha'] }}"></input>
+            </div>
+            <br>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Acessar</button>
+            </div>
+        </form>
+        </div>
+        </div>
+
+{% endblock %}

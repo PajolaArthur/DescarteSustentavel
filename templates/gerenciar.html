@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="section-content">
+        <div class="title-wrap">
+            <h2 class="section-title"> {% block title %} Gerenciar {% endblock %}</h2>
+            <p class="section-sub-title"></p>
+        </div>
+
+        <section id="gtco-features" class="bg-grey">
+            <div class="container">
+                <div class="section-content">
+                    <!-- Section Title -->
+                    <div class="title-wrap">
+                        <h2 class="section-title">
+                            <span>Mapa de Coletas</span>
+                        </h2>
+                    </div>
+                    <!-- End of Section Title -->
+                    <div class="row">
+                        <!-- Features Holder-->
+                        <div class="col-md-12 features-holder">
+                            <iframe class="map", src="/mapa" width="90%" height="430px"></iframe>
+                        </div>
+                        <!-- End of Features Holder-->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section id="gtco-pricing" class="bg-grey">
+    <div class="container">
+        <div class="section-content">
+            <!-- End of Section Title -->
+            {% for coleta in coletas %}
+            <div class="card-deck mb-3 text-center">
+                <div class="price-box card mb-4 box-shadow">
+                    <div class="card-header p-4">
+                        <h6 class="mb-0 text-cyan font-weight-bold">Situação: {{ coleta['situacao'] }}</h6>
+                        <h2 class="display-4 p-2 mb-0 font-weight-bold">    <a href="{{ url_for('coleta', coleta_id=coleta['id']) }}">
+                            <h2>{{ coleta['descricao'] }}</h2>
+                        </a></h2>
+                        <p class="mb-0">Atualizado em: {{ coleta['created'] }} <a href="{{ url_for('edit', id=coleta['id']) }}">
+                            <span class="badge badge-warning">Editar</span>
+                        </a></p> 
+                    </div>
+                    <div class="card-body p-4">
+                        <ul class="price-box-list list-unstyled mt-3 mb-4">
+                                <li>    <form action="{{ url_for('baixar', id=coleta['id']) }}" method="POST">
+                                    <input type="submit" value="Baixar PDF"
+                                            class="btn btn-outline-success"
+                                            onclick="return confirm('Tem certeza que deseja baixar PDF dessa coleta?')">
+                                </form></li><br>
+                            <li>   <form action="{{ url_for('concluido', id=coleta['id']) }}" method="POST">
+                                <input type="submit" value="Concluir"
+                                        class="btn btn-success"
+                                        onclick="return confirm('Tem certeza que deseja concluir a coleta?')">
+                                </form></li><br>
+                            <li>  <form action="{{ url_for('cancela', id=coleta['id']) }}" method="POST">
+                                <input type="submit" value="Cancelar"
+                                        class="btn btn-warning"
+                                        onclick="return confirm('Tem certeza que deseja cancelar a coleta?')">
+                            </form></li><br>
+                            <li><form action="{{ url_for('delete', id=coleta['id']) }}" method="POST">
+                                <input type="submit" value="Apagar"
+                                    class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Tem certeza que deseja apagar essa coleta?')">
+                            </form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+</section>		
+  
+{% endblock %}

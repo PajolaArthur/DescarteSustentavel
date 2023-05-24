@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron d-flex align-items-center" style="background-image: url(/static/img/hero-2.jpg)">
+    <div class="container text-center">
+      <h1 class="display-2 mb-4"></h1>
+    </div>
+  </div>	
+
+    <div class="container">
+        <div class="section-content">
+            <div class="title-wrap">
+                <h2 class="section-title"> {% block title %} Descarte Sustentável {% endblock %}<br>Verifique abaixo nossos<b> serviços</b></h2>
+                <p class="section-sub-title"></p>
+            </div>
+            
+            <div class="row text-center">
+                <div class="col-md-4 col-sm-6 ">
+                    <img class="rounded-circle" src="/static/icons/animated-coleta.gif" alt="Generic placeholder image" width="140" height="140">
+                    <h5 class="mb-4">Coleta</h5>
+                    <p>Clique em "Solicitar Coleta" para preencher o formulário de coleta.</p>
+                    <p><a class="btn btn-link" href="{{url_for('create')}}" role="button">Solicitar Coleta</a></p>
+                </div>
+                <!-- /.col-md-4 col-sm-6  -->
+                <div class="col-md-4 col-sm-6 ">
+                    <img class="rounded-circle" src="/static/icons/animated-gerenciar.gif" alt="Generic placeholder image" width="140" height="140">
+                    <h5 class="mb-4">Gerenciar</h5>
+                    <p>Clique em "Gerenciar" para acessar Painel Administrativo.</p>
+                    <p><a class="btn btn-link" href="{{url_for('gerenciar')}}" role="button">Gerenciar</a></p>
+                </div>
+                <!-- /.col-md-4 col-sm-6  -->
+                <div class="col-md-4 col-sm-6 ">
+                    <img class="rounded-circle" src="/static/icons/animated-sobre.gif" alt="Generic placeholder image" width="140" height="140">
+                    <h5 class="mb-4">Sobre Nós</h5>
+                    <p>Clique em "Detalhes" para saber mais sobre Descarte Sustentável.</p>
+                    <p><a class="btn btn-link" href="{{url_for('sobrenos')}}" role="button">Detalhes</a></p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </div>
+</section>
+{% endblock %}

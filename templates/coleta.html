@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<div class="container">
+    <div class="section-content">
+        <div class="title-wrap">
+            <h2 class="section-title"> {% block title %} Coleta 0{{ coleta['id'] }} - {{ coleta['descricao'] }} {% endblock %}</h2>
+            <p class="section-sub-title"></p>
+        </div>
+
+<section id="gtco-features" class="bg-grey">
+    <div class="price-box card mb-4 box-shadow">
+        <div class="card-body p-4">
+    <div class="coleta"> 
+    <h2>{% block descricao %} {{ coleta['descricao'] }} {% endblock %}</h2>
+    <span class="badge badge-primary"> Cadastrado em: {{ coleta['created'] }}</span>
+    <br><br>
+    <p><b>Quantidade: </b> {{ coleta['quantidade'] }} </p>
+    <p><b>Endereço: </b> {{ coleta['endereco'] }} <a href="https://www.google.com/maps/place/{{dadoslocal.geocord}}" target="_blank"><img src="static/img/google-maps.png"></a></p> 
+    <p><b>Telefone:</b> {{ coleta['telefone'] }} <a href="https://wa.me/55{{ dadoswhats['whats'] }}" target="_blank"><img src="static/img/logo_whatsapp.png"></a></p> 
+    <p><b>Dia: </b>{{ coleta ['diacoleta'] }} <b>  Hora: </b> {{ coleta['horacoleta'] }}</p>
+        <p><b>Mapa: </b></p>
+        <p><iframe class="map", src="/mapacoleta" width="88%" height="430"></iframe></p>
+</div>
+    </div>
+</div>
+
+</section>
+{% endblock %}
