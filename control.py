@@ -7,7 +7,8 @@ from fpdf import FPDF
 import folium
 
 usuariologado=0
-atualdataehora = datetime.now()
+
+atualdataehora = datetime.now(timezone)
 horadata = atualdataehora.strftime('%d/%m/%Y %H:%M:%S')
 
 
@@ -21,30 +22,7 @@ def index():
         dadoslogin = {"login":"Login"}
         dadosgerenciar = {"login":" "}        
 
-    coletas = Coletas.query.all()
-    mapObj = folium.Map(zoom_start=14, location=[-20.719641,-47.887951], width=800, height=400, position="center")
-
-    for coleta in coletas:
-
-        dados=(coleta.id,coleta.descricao,coleta.endereco,coleta.telefone,coleta.diacoleta)
-
-        inEnde= dados[2]
-        cep="14620-000"
-        cidade="Orlândia"
-    
-        Endereco = inEnde+"  "+cidade+" "+cep
-        geolocalizador = Nominatim(user_agent="geopy")
-        Localizacao = geolocalizador.geocode(Endereco)
-        if not Localizacao == None:
-            geolocal = Localizacao.latitude, Localizacao.longitude
-            marcador=coleta.id
-            marcador=folium.Marker(location=geolocal,
-            tooltip=dados[1],
-            popup=folium.Popup("\n Descrição: "+dados[1]+"\n Endereço: "+dados[2]+"\n Telefone: "+dados[3]+"\n Dia: "+dados[4],max_width=1000)).add_to(mapObj)
-        
-       
-    mapObj.save('templates/mapa.html')
-    return render_template('index.html', coletas=coletas, dadoslogin=dadoslogin, dadosgerenciar=dadosgerenciar)
+    return render_template('index.html', dadoslogin=dadoslogin, dadosgerenciar=dadosgerenciar)
 
 @app.route('/mapa')
 def mapa():
