@@ -1,26 +1,15 @@
 from main import db, datetime
-<<<<<<< HEAD
-
-class Usuarios(db.Model):
-    id = db.Column(db.Integer, primary_key = True) # Chave primária auto
-    created = db.Column(db.DateTime, default=datetime.datetime.utcnow) # Gerado no momento de insert
-=======
 from datetime import *
 
 class Usuarios(db.Model):
     id = db.Column(db.Integer, primary_key = True) # Chave primária auto
     created = db.Column(db.DateTime, default=datetime.utcnow) # Gerado no momento de insert
->>>>>>> eb18984 (Upt_1.6)
     nome = db.Column(db.String(40), nullable = False) # admin
     senha = db.Column(db.String(40), nullable = False) # admin
 
 class Coletas(db.Model):
     id = db.Column(db.Integer, primary_key = True) # Chave primária auto
-<<<<<<< HEAD
-    created = db.Column(db.DateTime, default=datetime.datetime.utcnow) # Gerado no momento de insert
-=======
     created = db.Column(db.DateTime, default=datetime.utcnow) # Gerado no momento de insert
->>>>>>> eb18984 (Upt_1.6)
     descricao = db.Column(db.String(60), nullable = False) # Fogão
     quantidade = db.Column(db.String(3), nullable = False) # 2
     endereco = db.Column(db.String(40), nullable = False) # Praça Coronel Francisco Orlando 600
