@@ -7,12 +7,9 @@ from fpdf import FPDF
 import folium
 
 usuariologado=0
-<<<<<<< HEAD
-=======
 atualdataehora = datetime.now()
 horadata = atualdataehora.strftime('%d/%m/%Y %H:%M:%S')
 
->>>>>>> eb18984 (Upt_1.6)
 
 @app.route('/')
 def index():
@@ -73,52 +70,6 @@ def coleta(coleta_id):
     else:
         dadoslogin = {"login":"Login"}
         dadosgerenciar = {"login":" "} 
-<<<<<<< HEAD
-        
-    coleta = get_coleta(coleta_id)
-    
-    whatsapp=coleta.telefone
-    telddd = whatsapp[1:3]
-    telinicio = whatsapp[5:10]
-    telfinal = whatsapp[11:15]
-
-    whatsapp=telddd+telinicio+telfinal
-    dadoswhats = {"whats":whatsapp}
-   
-    geolocalizador = Nominatim(user_agent="geopy")
-    local= coleta.endereco
-    localendereco = (local+" Orlândia 14620-000")
-    geolocal = geolocalizador.geocode(localendereco)
-    if  geolocal == None:
-        geocord = localendereco
-        dadoslocal = {"geoendereco":localendereco, "geocord":geocord}
-        mapcoleta = folium.Map(zoom_start=20, location=[-20.719641,-47.887951], width=800, height=400, position="center")
-        mapcoleta.save('templates/mapacoleta.html')
-
-        return render_template('coleta.html', coleta=coleta, dadoslocal=dadoslocal, dadoswhats=dadoswhats, dadoslogin=dadoslogin, dadosgerenciar=dadosgerenciar)
-
-    else:
-        geocord = geolocal.latitude, geolocal.longitude
-        dadoslocal = {"geoendereco":localendereco, "geocord":geocord}
-        mapcoleta = folium.Map(zoom_start=14, location=[-20.719641,-47.887951], width=800, height=400, position="center")
-        dados=(coleta.id,coleta.descricao,coleta.endereco,coleta.telefone,coleta.diacoleta)
-    
-        inEnde= dados[2]
-        cep="14620-000"
-        cidade="Orlândia"
-    
-        Endereco = inEnde+"  "+cidade+" "+cep
-        geolocalizador = Nominatim(user_agent="geopy")
-        Localizacao = geolocalizador.geocode(Endereco)
-
-        geolocal = Localizacao.latitude, Localizacao.longitude
-
-        folium.Marker(location=geocord,
-        tooltip=dados[1],
-        popup=folium.Popup("\n Descrição: "+dados[1]+"\n Endereço: "+dados[2]+"\n Telefone: "+dados[3]+"\n Dia: "+dados[4],max_width=1000)).add_to(mapcoleta)
-        mapcoleta.save('templates/mapacoleta.html')
-        return render_template('coleta.html', coleta=coleta, dadoslocal=dadoslocal, dadoswhats=dadoswhats, dadoslogin=dadoslogin, dadosgerenciar=dadosgerenciar)
-=======
 
     if usuariologado==0:
         flash("Usuário não identificado, realize Login para Gerenciar!")
@@ -166,56 +117,10 @@ def coleta(coleta_id):
             popup=folium.Popup("\n Descrição: "+dados[1]+"\n Endereço: "+dados[2]+"\n Telefone: "+dados[3]+"\n Dia: "+dados[4],max_width=1000)).add_to(mapcoleta)
             mapcoleta.save('templates/mapacoleta.html')
             return render_template('coleta.html', coleta=coleta, dadoslocal=dadoslocal, dadoswhats=dadoswhats, dadoslogin=dadoslogin, dadosgerenciar=dadosgerenciar)
->>>>>>> eb18984 (Upt_1.6)
    
 @app.route('/<int:id>/baixar', methods=('GET', 'POST'))
 def baixar(id):
     coleta = get_coleta(id)
-<<<<<<< HEAD
-
-    caminhodoarquivo='static/PDFs/'
-    nomearquivo=coleta.descricao+"_"+coleta.endereco
-    if(os.path.exists(caminhodoarquivo+nomearquivo+'.pdf')):
-        #Arquivo existe, somente solicitar download
-        caminho = caminhodoarquivo+nomearquivo+'.pdf'
-        return send_file(caminho, as_attachment=True)
-    else:
-        #Arquivo não existe, gerar pdf e solicitar o download
-        # Instantiation of inherited class
-        pdf = FPDF()
-        pdf.add_page()
-        # HEADER
-        # Logo
-        pdf.image('static/img/reciclando.png', 65, 10, 80)
-        # Arial bold 15
-        pdf.set_font('Arial', 'B', 30)
-        # Move to the right
-        pdf.cell(80)
-        # Title
-        pdf.ln(80)
-        pdf.cell(190, 20, 'Descarte Sustentável', 1, 0, 'C')
-        # Line break
-        pdf.ln(40)
-        pdf.alias_nb_pages()
-        pdf.set_font('Times', '', 15)
-        pdf.cell(0, 4, 'Descrição: '+coleta.descricao, 0, 1)
-        pdf.ln(5)
-        pdf.cell(0, 4, 'Quantidade: '+coleta.quantidade, 0, 1)
-        pdf.ln(5)
-        pdf.cell(0, 4, 'Endereco: '+coleta.endereco, 0, 1)
-        pdf.ln(5)
-        pdf.cell(0, 4, 'Telefone: '+coleta.telefone, 0, 1)
-        pdf.ln(5)
-        pdf.cell(0, 4, 'Dia de coleta: '+coleta.diacoleta, 0, 1)
-        pdf.ln(5)
-        pdf.cell(0, 4, 'Hora de coleta: '+coleta.horacoleta, 0, 1)
-        pdf.ln(5)
-        pdf.cell(0, 4, 'Situação: '+coleta.situacao, 0, 1)
-
-        pdf.output(caminhodoarquivo+nomearquivo+'.pdf', 'F')
-
-    nomearquivo=coleta.descricao+"_"+coleta.endereco
-=======
     idcoleta = str(coleta.id)
 
     caminhodoarquivo='static/PDFs/'
@@ -259,7 +164,6 @@ def baixar(id):
 
     pdf.output(caminhodoarquivo+nomearquivo+'.pdf', 'F')
 
->>>>>>> eb18984 (Upt_1.6)
     caminho = caminhodoarquivo+nomearquivo+'.pdf'
     return send_file(caminho, as_attachment=True)
 
@@ -283,11 +187,7 @@ def gerenciar():
 
             for coleta in coletas:
 
-<<<<<<< HEAD
-                dados=(coleta.id,coleta.descricao,coleta.endereco,coleta.telefone,coleta.diacoleta)
-=======
                 dados=(coleta.id,coleta.descricao,coleta.endereco,coleta.telefone,coleta.diacoleta,coleta.situacao)
->>>>>>> eb18984 (Upt_1.6)
 
                 inEnde= dados[2]
                 cep="14620-000"
@@ -301,11 +201,7 @@ def gerenciar():
                     marcador=coleta.id
                     marcador=folium.Marker(location=geolocal,
                     tooltip=dados[1],
-<<<<<<< HEAD
-                    popup=folium.Popup("\n Descrição: "+dados[1]+"\n Endereço: "+dados[2]+"\n Telefone: "+dados[3]+"\n Dia: "+dados[4],max_width=1000)).add_to(mapObj)
-=======
                     popup=folium.Popup("|Situação: "+dados[5]+" |Descrição: "+dados[1]+" |Endereço: "+dados[2]+" |Telefone: "+dados[3]+" |Dia: "+dados[4],max_width=1000)).add_to(mapObj)
->>>>>>> eb18984 (Upt_1.6)
         
        
             mapObj.save('templates/mapa.html')
@@ -326,18 +222,10 @@ def login():
         usuarios = Usuarios.query.all()
 
         if request.method == 'POST':
-<<<<<<< HEAD
-            now = datetime.datetime.now()
-            nome = request.form['nome']
-            senha = request.form['senha']
-            print("Entrada: ",nome, senha)
-            print("Tempo: ", now)
-=======
             nome = request.form['nome']
             senha = request.form['senha']
             print("Entrada: ",nome, senha)
             print("Tempo: ", horadata)
->>>>>>> eb18984 (Upt_1.6)
             if not nome and senha:
                 flash('Campos obrigatórios! Preencha os campos Nome e Senha!')
             elif not nome:
@@ -351,10 +239,6 @@ def login():
                         return redirect(url_for('gerenciar'))
                     else: 
                         return redirect(url_for('login'))
-<<<<<<< HEAD
-                        ret
-=======
->>>>>>> eb18984 (Upt_1.6)
         return render_template('login.html', dadoslogin=dadoslogin, dadosgerenciar=dadosgerenciar)
     else:
         return redirect(url_for('gerenciar'))
@@ -380,17 +264,6 @@ def create():
         horacoleta = request.form['horacoleta']
         situacao = "Em andamento"
 
-<<<<<<< HEAD
-        print("Descrição: ", descricao)
-        print("Quantidade: ", quantidade)
-        print("Endereço: ", endereco)
-        print("Telefone: ", telefone)
-        print("Dia coleta: ", diacoleta)
-        print("Hora coleta: ", horacoleta)
-        print("Situacao: ", situacao)
-
-=======
->>>>>>> eb18984 (Upt_1.6)
         if not descricao:
             flash('Campos obrigatórios! Preencha o campo Descrição')
         elif not quantidade:
