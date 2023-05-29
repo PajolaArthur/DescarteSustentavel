@@ -8,9 +8,8 @@ import folium
 
 usuariologado=0
 
-atualdataehora = datetime.now(timezone)
+atualdataehora = datetime.now()
 horadata = atualdataehora.strftime('%d/%m/%Y %H:%M:%S')
-
 
 @app.route('/')
 def index():
