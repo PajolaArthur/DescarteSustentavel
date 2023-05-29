@@ -55,7 +55,11 @@ cur.execute("INSERT INTO coletas (descricao, quantidade, endereco, telefone, dia
              '(16) 99988-0774',
              'Segunda-feira',
              '08:20',
+<<<<<<< HEAD
              'Em andamento')
+=======
+             'Cancelada')
+>>>>>>> eb18984 (Upt_1.6)
             )
 
 cur.execute("INSERT INTO coletas (descricao, quantidade, endereco, telefone, diacoleta, horacoleta, situacao) VALUES (?, ?, ?, ?, ?, ?, ?)",
@@ -65,7 +69,11 @@ cur.execute("INSERT INTO coletas (descricao, quantidade, endereco, telefone, dia
              '(16) 99214-5034',
              'Terça-feira',
              'Terça-feira',
+<<<<<<< HEAD
              'Cancelada')
+=======
+             'Concluída')
+>>>>>>> eb18984 (Upt_1.6)
             )
 
 connection.commit()
