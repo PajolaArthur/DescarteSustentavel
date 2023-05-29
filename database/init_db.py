@@ -1,72 +1,23 @@
-import sqlite3
-
-connection = sqlite3.connect('database/database.db')
-
-with open('database/usuarios.sql') as f:
-    connection.executescript(f.read())
-
-cur = connection.cursor()
-
-cur.execute("INSERT INTO usuarios (nome, senha) VALUES (?, ?)",
-            ('admin', 
-             'admin')
-            )
-
-cur.execute("INSERT INTO usuarios (nome, senha) VALUES (?, ?)",
-            ('arthur', 
-             '1234')
-            )
+from main import db, datetime
+from datetime import *
+import pytz
 
 
-connection.commit()
-connection.close()
+timezone = pytz.timezone('America/Sao_Paulo')
 
-connection = sqlite3.connect('database/database.db')
+class Usuarios(db.Model):
+    id = db.Column(db.Integer, primary_key = True) # Chave primária auto
+    created = db.Column(db.DateTime, default=datetime.now(timezone)) # Gerado no momento de insert
+    nome = db.Column(db.String(40), nullable = False) # admin
+    senha = db.Column(db.String(40), nullable = False) # admin
 
-with open('database/coletas.sql') as f:
-    connection.executescript(f.read())
-
-cur = connection.cursor()
-
-cur.execute("INSERT INTO coletas (descricao, quantidade, endereco, telefone, diacoleta, horacoleta, situacao) VALUES (?, ?, ?, ?, ?, ?, ?)",
-            ('Geladeira', 
-             '1', 
-             'Prefeitura Municipal de Orlandia', 
-             '(16) 99316-2959',
-             'Domingo',
-             '15:00',
-             'Concluída')
-            )
-
-cur.execute("INSERT INTO coletas (descricao, quantidade, endereco, telefone, diacoleta, horacoleta, situacao) VALUES (?, ?, ?, ?, ?, ?, ?)",
-            ('Computador', 
-             '12', 
-             'Rua Quatro, 520 - Centro', 
-             '(34) 99889-2822',
-             'Quinta-feira',
-             '17:00',
-             'Concluída')
-            )
-
-cur.execute("INSERT INTO coletas (descricao, quantidade, endereco, telefone, diacoleta, horacoleta, situacao) VALUES (?, ?, ?, ?, ?, ?, ?)",
-            ('Forno', 
-             '2', 
-             'ETEC Prof. Alcídio de Souza Prado - Centro', 
-             '(16) 99988-0774',
-             'Segunda-feira',
-             '08:20',
-             'Cancelada')
-            )
-
-cur.execute("INSERT INTO coletas (descricao, quantidade, endereco, telefone, diacoleta, horacoleta, situacao) VALUES (?, ?, ?, ?, ?, ?, ?)",
-            ('Micro-ondas', 
-             '6', 
-             'Rua Vinte e Seis, 1494 - Jardim Cidade Alta', 
-             '(16) 99214-5034',
-             'Terça-feira',
-             'Terça-feira',
-             'Concluída')
-            )
-
-connection.commit()
-connection.close()
+class Coletas(db.Model):
+    id = db.Column(db.Integer, primary_key = True) # Chave primária auto
+    created = db.Column(db.DateTime, default=datetime.now(timezone)) # Gerado no momento de insert
+    descricao = db.Column(db.String(60), nullable = False) # Fogão
+    quantidade = db.Column(db.String(3), nullable = False) # 2
+    endereco = db.Column(db.String(40), nullable = False) # Praça Coronel Francisco Orlando 600
+    telefone = db.Column(db.String(15), nullable = False) # 16992956535
+    diacoleta = db.Column(db.String(15), nullable = True) # Segunda-Feira
+    horacoleta = db.Column(db.String(5), nullable = True) # 15 Horas
+    situacao = db.Column(db.String(20), nullable = False) # Em andamento
